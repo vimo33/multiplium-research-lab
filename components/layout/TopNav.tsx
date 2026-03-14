@@ -5,14 +5,14 @@ import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 
 const NAV_LINKS = [
-  { label: "Overview",      href: "/overview",          external: false },
-  { label: "Landscape",     href: "/landscape",         external: false },
-  { label: "Cluster View",  href: "/landscape/cluster", external: false },
-  { label: "Scoring",       href: "/scoring",           external: false },
-  { label: "Shortlist",     href: "/shortlist",         external: false },
-  { label: "Deep Research", href: "/deep-research",     external: false },
-  { label: "Evidence",      href: "/evidence",          external: false },
-  { label: "Presentation",  href: "/presentation",      external: true  },
+  { label: "Overview",      href: "/overview",          newTab: false },
+  { label: "Landscape",     href: "/landscape",         newTab: false },
+  { label: "Cluster View",  href: "/landscape/cluster", newTab: false },
+  { label: "Scoring",       href: "/scoring",           newTab: false },
+  { label: "Shortlist",     href: "/shortlist",         newTab: false },
+  { label: "Deep Research", href: "/deep-research",     newTab: false },
+  { label: "Evidence",      href: "/evidence",          newTab: false },
+  { label: "Presentation",  href: "/presentation",      newTab: true  },
 ];
 
 export default function TopNav() {
@@ -26,25 +26,23 @@ export default function TopNav() {
         </h1>
       </div>
       <nav className="flex items-center gap-8">
-        {NAV_LINKS.map(({ label, href, external }) => {
-          const active = !external && (pathname === href || (href !== "/overview" && pathname.startsWith(href)));
-          const cls = cn(
-            "text-[13px] font-sans font-medium uppercase tracking-wider transition-colors",
-            active
-              ? "text-primary border-b-2 border-primary pb-px"
-              : "text-text-muted hover:text-text-main"
-          );
-          if (external) {
-            return (
-              <a key={href} href={href} target="_blank" rel="noopener noreferrer" className={cls}>
-                {label}
-                <span className="ml-1 text-[10px] opacity-40">↗</span>
-              </a>
-            );
-          }
+        {NAV_LINKS.map(({ label, href, newTab }) => {
+          const active = !newTab && (pathname === href || (href !== "/overview" && pathname.startsWith(href)));
           return (
-            <Link key={href} href={href} className={cls}>
+            <Link
+              key={href}
+              href={href}
+              target={newTab ? "_blank" : undefined}
+              rel={newTab ? "noopener noreferrer" : undefined}
+              className={cn(
+                "text-[13px] font-sans font-medium uppercase tracking-wider transition-colors",
+                active
+                  ? "text-primary border-b-2 border-primary pb-px"
+                  : "text-text-muted hover:text-text-main"
+              )}
+            >
               {label}
+              {newTab && <span className="ml-1 text-[10px] opacity-40">↗</span>}
             </Link>
           );
         })}
