@@ -34,6 +34,8 @@ export function getDossier(slug: string): CompanyDossier {
   return readJSON<CompanyDossier>(`dossiers/${slug}.json`);
 }
 
+export const DOSSIER_SLUGS = ["biome-makers", "biorizon-biotech", "agrology"] as const;
+
 export function getAllDossiers(): CompanyDossier[] {
-  return ["biome-makers", "biorizon-biotech", "agrology"].map(getDossier);
+  return DOSSIER_SLUGS.map(getDossier);
 }

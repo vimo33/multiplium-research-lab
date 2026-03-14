@@ -33,7 +33,7 @@ export default function ClusterSidePanel({ company: co, onClose }: Props) {
           Company Detail
           <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
         </Link>
-        {co.shortlistFlag && (
+        {["biome-makers", "biorizon-biotech", "agrology"].includes(co.slug) && (
           <Link
             href={`/deep-research/${co.slug}`}
             className="flex items-center justify-between font-sans text-[13px] text-text-muted hover:text-primary transition-colors"
