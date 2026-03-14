@@ -1,6 +1,7 @@
 import { getTop20 } from "@/lib/data";
 import PageContainer from "@/components/layout/PageContainer";
 import ShortlistCard from "@/components/cards/ShortlistCard";
+import { formatScore } from "@/lib/utils";
 import type { CompanyIndexItem } from "@/lib/types";
 
 export default function ShortlistPage() {
@@ -21,9 +22,7 @@ export default function ShortlistPage() {
           Top 20 Shortlist
         </h2>
         <p className="font-sans text-[15px] text-text-muted max-w-2xl leading-relaxed">
-          Curated high-conviction targets evaluated across five regenerative agronomic pillars.
-          Ranked by weighted composite score from {top20.length > 0 ? top20[top20.length-1].weightedTotalScore.toFixed(2) : "—"} to {top20[0]?.weightedTotalScore.toFixed(2) ?? "—"}.
-          All entries are <span className="font-mono text-primary">scoreable_high</span> confidence.
+          Highest-ranked companies from the scored regenerative viticulture landscape.
         </p>
       </div>
 
@@ -34,14 +33,39 @@ export default function ShortlistPage() {
         </div>
       </div>
 
-      <div>
-        <p className="font-sans text-[11px] uppercase tracking-widest text-text-muted mb-6">
-          Full Ranked List (5–20)
-        </p>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {rest.map(co => <ShortlistCard key={co.slug} company={co} />)}
+      {/* Full ranked shortlist */}
+      <section>
+        <p className="font-sans text-[11px] uppercase tracking-widest text-text-muted mb-4">Full Ranked Shortlist</p>
+        <div className="border border-border-color rounded-sm overflow-hidden">
+          <table className="w-full">
+            <thead>
+              <tr className="border-b border-border-color bg-surface">
+                <th className="text-left font-sans text-[11px] uppercase tracking-wider text-text-muted px-4 py-3 w-12">Rank</th>
+                <th className="text-left font-sans text-[11px] uppercase tracking-wider text-text-muted px-4 py-3">Company</th>
+                <th className="text-left font-sans text-[11px] uppercase tracking-wider text-text-muted px-4 py-3">Country</th>
+                <th className="text-left font-sans text-[11px] uppercase tracking-wider text-text-muted px-4 py-3">Segment</th>
+                <th className="text-right font-sans text-[11px] uppercase tracking-wider text-text-muted px-4 py-3">Score</th>
+                <th className="text-left font-sans text-[11px] uppercase tracking-wider text-text-muted px-4 py-3">Confidence</th>
+              </tr>
+            </thead>
+            <tbody>
+              {top20.map((co, i) => (
+                <tr key={co.slug} className={`border-b border-border-color last:border-0 ${i < 5 ? "bg-primary/[0.02]" : ""}`}>
+                  <td className="font-mono text-[13px] text-primary px-4 py-3">{co.rank}</td>
+                  <td className="font-sans text-[13px] font-medium text-text-main px-4 py-3">{co.company}</td>
+                  <td className="font-sans text-[13px] text-text-muted px-4 py-3">{co.country}</td>
+                  <td className="font-sans text-[12px] text-text-muted px-4 py-3">{co.normalizedSegment}</td>
+                  <td className="font-mono text-[13px] text-primary text-right px-4 py-3">{formatScore(co.weightedTotalScore)}</td>
+                  <td className="font-sans text-[12px] text-text-muted px-4 py-3 capitalize">{co.scoreConfidence}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
-      </div>
+        <p className="font-sans text-[12px] text-text-muted mt-4 italic">
+          The shortlist is a scored ranking, not an investment recommendation. Final deep research selection also considers investability constraints.
+        </p>
+      </section>
     </PageContainer>
   );
 }

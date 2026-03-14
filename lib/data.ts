@@ -14,6 +14,10 @@ export function getTop20(): CompanyIndexItem[] {
   return readJSON<CompanyIndexItem[]>("top20.json");
 }
 
+export function getAllCompanies(): CompanyIndexItem[] {
+  return readJSON<CompanyIndexItem[]>("all-companies.json");
+}
+
 export function getTop3(): Top3Item[] {
   return readJSON<Top3Item[]>("top3.json");
 }

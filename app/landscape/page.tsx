@@ -1,10 +1,10 @@
-import { getTop20 } from "@/lib/data";
+import { getAllCompanies } from "@/lib/data";
 import PageContainer from "@/components/layout/PageContainer";
 import CompanyTable from "@/components/tables/CompanyTable";
 import Link from "next/link";
 
 export default function LandscapePage() {
-  const top20 = getTop20();
+  const companies = getAllCompanies();
 
   return (
     <PageContainer variant="wide">
@@ -13,7 +13,7 @@ export default function LandscapePage() {
           <p className="font-sans text-[11px] uppercase tracking-widest text-text-muted mb-3">Landscape</p>
           <h2 className="font-display text-[40px] font-semibold leading-tight">Landscape Explorer</h2>
           <p className="font-sans text-[15px] text-text-muted mt-2">
-            High-density data triage. Currently showing top-20 shortlisted entities.
+            {companies.length} companies mapped across the regenerative viticulture value chain.
           </p>
         </div>
         <Link
@@ -24,7 +24,7 @@ export default function LandscapePage() {
           Cluster View
         </Link>
       </div>
-      <CompanyTable data={top20} />
+      <CompanyTable data={companies} />
     </PageContainer>
   );
 }

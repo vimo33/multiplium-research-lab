@@ -54,31 +54,44 @@ export default function OverviewPage() {
       </section>
 
       {/* Metrics */}
-      <section className="mb-20 grid grid-cols-3 gap-8">
+      <section className="mb-20 grid grid-cols-4 gap-8">
         <MetricCard icon="corporate_fare" label="Companies Mapped" value={meta.totalCompanies}
           description="Across 8 segments of the regenerative viticulture value chain" />
         <MetricCard icon="stars" label="Top Shortlist" value={meta.topShortlist}
           description="Ranked by composite investor score across 5 weighted dimensions" />
         <MetricCard icon="biotech" label="Deep Research" value={meta.deepResearch}
           description="Investor-grade dossiers on the highest-ranked eligible companies" />
+        <MetricCard icon="analytics" label="Scoring Dimensions" value={5}
+          description="Five-pillar investor model applied uniformly across the company universe" />
       </section>
 
-      {/* Why now block */}
+      {/* Why this matters */}
       <section className="mb-20 border-l-4 border-primary pl-8 py-2">
-        <h3 className="font-display text-[21px] italic text-text-muted mb-2">Why now?</h3>
+        <h3 className="font-display text-[21px] italic text-text-muted mb-2">Why this matters</h3>
         <p className="font-sans text-[15px] text-text-main leading-relaxed">
-          Global wine production fell to a 64-year low in 2024 (OIV). Climate stress, regulatory pressure
-          on agrochemicals, and buyer ESG mandates are converging to make regenerative practices
-          an operational necessity — and a commercial technology market.
+          Viticulture is being reshaped by climate stress, water pressure, disease risk, and shifting
+          regulatory and buyer expectations. This research workflow maps the technology landscape,
+          applies a structured investor model, and identifies the most relevant companies for further diligence.
+        </p>
+      </section>
+
+      {/* How the workflow works */}
+      <section className="mb-20 border-l-4 border-border-color pl-8 py-2">
+        <h3 className="font-display text-[21px] italic text-text-muted mb-2">How the workflow works</h3>
+        <p className="font-sans text-[15px] text-text-main leading-relaxed">
+          The research process maps a company landscape, enriches missing data, applies a five-part
+          scoring model, and then narrows the field to a ranked top 20. From that shortlist, a final
+          top 3 is selected for deeper research after additional investability review.
         </p>
       </section>
 
       {/* CTAs */}
-      <section className="grid grid-cols-3 gap-4">
+      <section className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {[
           { label: "Explore Landscape", href: "/landscape", icon: "travel_explore" },
           { label: "Review Scoring",    href: "/scoring",   icon: "analytics" },
           { label: "Open Shortlist",    href: "/shortlist", icon: "stars" },
+          { label: "Read Deep Research", href: "/deep-research", icon: "biotech" },
         ].map(({ label, href, icon }) => (
           <Link key={href} href={href}
             className="flex items-center gap-3 border border-border-color bg-surface px-5 py-4 rounded-sm hover:border-primary/40 hover:shadow-sm transition-all group">

@@ -1,0 +1,23 @@
+{
+  "definitions": {
+    "researchCompleteness": "Computed from exactly 8 fields: Country, Summary, Team Size, Sector, KPI Alignment, Direct Competitors, Differentiation, Sources. High = 6–8 valid fields. Medium = 3–5. Low = 0–2.",
+    "scoreability": "Whether enough structured data exists to calculate a meaningful score. Four levels: scoreable_high (all 6 key fields), scoreable_medium (4–5), scoreable_low (2–3), not_scoreable (<2).",
+    "scoreConfidence": "How reliable the resulting score is after normalization and judgment calls. High = minimal inference required. Medium = some fields inferred from context. Low = material missingness affects the score.",
+    "investorSignal": "Qualitative investment-oriented conclusion used in the top-3 deep research layer. Derived from composite score, score confidence, and dossier analysis.",
+    "shortlist": "Computed ranked top 20 from the five-pillar scoring model applied to the enriched company-only dataset."
+  },
+  "pipelineFiles": [
+    "output_sanitized/02_scoring/02_top20.csv",
+    "output_sanitized/02_scoring/02_scoring_report.md",
+    "output_sanitized/03_top3/03_top3_summary.csv",
+    "output_sanitized/03_top3/03_top3_comparison.md",
+    "output_sanitized/03_top3/03_top3_red_flags.md",
+    "output_sanitized/03_top3/dossiers/biome-makers.md",
+    "output_sanitized/03_top3/dossiers/biorizon-biotech.md",
+    "output_sanitized/03_top3/dossiers/agrology.md",
+    "output_sanitized/04_memo/04_revised_investor_memo.md",
+    "output_sanitized/04_memo/04_source_register.csv"
+  ],
+  "benchmarkNote": "The ranked output is benchmarked against the prior reference model, but the current shortlist is computed from the enriched dataset generated in this workflow.",
+  "disclaimer": "This interface summarizes pipeline outputs. Source-backed evidence remains available in the memo, source register, and company dossiers."
+}
