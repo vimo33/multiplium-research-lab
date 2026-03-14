@@ -17,6 +17,18 @@ const SEGMENT_GROUPS: Record<string, { x: number; y: number }> = {
   "Consumption platforms":                       { x: 0.85, y: 0.5 },
 };
 
+const SEGMENT_LABELS: Record<string, string> = {
+  "Precision viticulture / vineyard management": "Precision Viticulture",
+  "Soil health / biologicals":                   "Soil Health",
+  "Carbon MRV / traceability":                   "Carbon MRV",
+  "Irrigation optimisation":                     "Irrigation",
+  "Pest management":                             "Pest Management",
+  "Wine production technologies":                "Wine Production",
+  "Packaging / recycling":                       "Packaging & Recycling",
+  "Marketing / distribution":                    "Marketing & Distribution",
+  "Consumption platforms":                       "Consumption",
+};
+
 interface SimNode extends CompanyIndexItem {
   x?: number; y?: number; vx?: number; vy?: number;
   fx?: number | null; fy?: number | null;
@@ -67,6 +79,23 @@ export default function ClusterCanvas({ data }: Props) {
       circle.addEventListener("mouseleave", () => circle.setAttribute("opacity", "0.85"));
       g.appendChild(circle);
       return circle;
+    });
+
+    // Draw segment labels
+    const NS = "http://www.w3.org/2000/svg";
+    Object.entries(SEGMENT_GROUPS).forEach(([seg, pos]) => {
+      const label = document.createElementNS(NS, "text");
+      label.setAttribute("x", String(pos.x * W));
+      label.setAttribute("y", String(pos.y * H - 28));
+      label.setAttribute("text-anchor", "middle");
+      label.setAttribute("font-family", "Albert Sans, sans-serif");
+      label.setAttribute("font-size", "11");
+      label.setAttribute("font-weight", "500");
+      label.setAttribute("letter-spacing", "0.05em");
+      label.setAttribute("fill", "#8C8C85");
+      label.setAttribute("pointer-events", "none");
+      label.textContent = SEGMENT_LABELS[seg] ?? seg;
+      svgEl.insertBefore(label, svgEl.firstChild); // render behind circles
     });
 
     sim.on("tick", () => {
