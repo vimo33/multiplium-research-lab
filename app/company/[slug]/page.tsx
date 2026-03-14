@@ -1,12 +1,12 @@
 import { notFound } from "next/navigation";
-import { getTop20 } from "@/lib/data";
+import { getAllCompanies } from "@/lib/data";
 import PageContainer from "@/components/layout/PageContainer";
 import ConfidenceBadge from "@/components/badges/ConfidenceBadge";
 import SegmentPill from "@/components/badges/SegmentPill";
 import { formatScore, scoreToPercent, heatColor } from "@/lib/utils";
 
 export function generateStaticParams() {
-  return getTop20().map(co => ({ slug: co.slug }));
+  return getAllCompanies().map(co => ({ slug: co.slug }));
 }
 
 const SCORE_FIELDS = [
@@ -19,7 +19,7 @@ const SCORE_FIELDS = [
 
 export default async function CompanyDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const all = getTop20();
+  const all = getAllCompanies();
   const co  = all.find(c => c.slug === slug);
   if (!co) notFound();
 
