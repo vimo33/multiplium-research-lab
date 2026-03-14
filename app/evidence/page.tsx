@@ -1,5 +1,6 @@
 import { getScoringMeta } from "@/lib/data";
 import PageContainer from "@/components/layout/PageContainer";
+import PipelineFileList from "@/components/evidence/PipelineFileList";
 
 const METHODOLOGY_CARDS = [
   {
@@ -61,25 +62,7 @@ export default function EvidencePage() {
       {/* Source files */}
       <div>
         <h3 className="font-sans text-[13px] uppercase tracking-wider text-text-muted mb-4">Pipeline Outputs Backing This App</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 font-mono text-[12px] text-text-muted">
-          {[
-            "output_sanitized/02_scoring/02_top20.csv",
-            "output_sanitized/02_scoring/02_scoring_report.md",
-            "output_sanitized/03_top3/03_top3_summary.csv",
-            "output_sanitized/03_top3/03_top3_comparison.md",
-            "output_sanitized/03_top3/03_top3_red_flags.md",
-            "output_sanitized/03_top3/dossiers/biome-makers.md",
-            "output_sanitized/03_top3/dossiers/biorizon-biotech.md",
-            "output_sanitized/03_top3/dossiers/agrology.md",
-            "output_sanitized/04_memo/04_revised_investor_memo.md",
-            "output_sanitized/04_memo/04_source_register.csv",
-          ].map(f => (
-            <div key={f} className="flex items-center gap-2 p-3 border border-border-color rounded-sm bg-surface">
-              <span className="material-symbols-outlined text-[14px] text-primary">description</span>
-              <span className="truncate">{f}</span>
-            </div>
-          ))}
-        </div>
+        <PipelineFileList />
       </div>
     </PageContainer>
   );
