@@ -1,9 +1,26 @@
 import { notFound } from "next/navigation";
 import { getDossier } from "@/lib/data";
-import PageContainer from "@/components/layout/PageContainer";
 import DossierArticle from "@/components/research/DossierArticle";
-import SignalBadge from "@/components/badges/SignalBadge";
 import { formatScore } from "@/lib/utils";
+
+// Presentation design tokens
+const T = {
+  bg:      "#F9F6F0",
+  ink:     "#1A1C19",
+  primary: "#6E2D2A",
+  muted:   "#896361",
+  border:  "#DDD8CF",
+  faint:   "#F0EBE1",
+} as const;
+
+const DISPLAY = "'Cormorant Garamond', Georgia, serif";
+const SANS    = "'Chivo', 'Albert Sans', sans-serif";
+const MONO    = "'JetBrains Mono', monospace";
+
+const SIGNAL_LABEL: Record<string, string> = {
+  HIGH:   "High Conviction",
+  MEDIUM: "Medium Conviction",
+};
 
 export function generateStaticParams() {
   return ["biome-makers", "biorizon-biotech", "agrology"].map(slug => ({ slug }));
@@ -16,45 +33,95 @@ export default async function DossierPage({ params }: { params: Promise<{ slug: 
   catch { notFound(); }
 
   return (
-    <>
-      <div className="h-[2px] bg-primary/20 sticky top-[57px] z-40" />
+    <div style={{ background: T.bg, minHeight: "100vh", fontFamily: SANS }}>
+      {/* Burgundy accent line at top */}
+      <div style={{ height: "2px", background: T.primary, opacity: 0.3, position: "sticky", top: "57px", zIndex: 40 }} />
 
-      <PageContainer variant="editorial" className="mt-16">
-        {/* Breadcrumbs */}
-        <div className="flex items-center gap-3 mb-6 text-[11px] font-mono uppercase tracking-widest text-text-muted">
-          <span>Deep Research</span>
-          <span>/</span>
-          <span>{dossier.company}</span>
-        </div>
+      <div style={{ maxWidth: "800px", margin: "0 auto", padding: "72px 48px 96px" }}>
 
-        {/* Header */}
-        <div className="mb-12">
-          <div className="flex items-center gap-4 mb-4">
-            <span className="font-mono text-[40px] font-semibold text-primary">
-              {formatScore(dossier.score)}
+        {/* Breadcrumb */}
+        <p style={{
+          fontFamily: SANS, fontSize: "10px", letterSpacing: "0.2em",
+          textTransform: "uppercase", color: T.muted, marginBottom: "40px",
+        }}>
+          Deep Research &nbsp;/&nbsp; {dossier.company}
+        </p>
+
+        {/* Score + Signal row */}
+        <div style={{ display: "flex", alignItems: "center", gap: "24px", marginBottom: "24px" }}>
+          <span style={{
+            fontFamily: MONO, fontSize: "42px", fontWeight: 400, color: T.primary, lineHeight: 1,
+          }}>
+            {formatScore(dossier.score)}
+          </span>
+          <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
+            {dossier.signal && (
+              <span style={{
+                fontFamily: SANS, fontSize: "9px", fontWeight: 700,
+                letterSpacing: "0.18em", textTransform: "uppercase",
+                color: T.primary,
+                border: `1px solid ${T.primary}`,
+                padding: "3px 8px",
+                display: "inline-block",
+              }}>
+                {SIGNAL_LABEL[dossier.signal] ?? dossier.signal}
+              </span>
+            )}
+            <span style={{ fontFamily: MONO, fontSize: "11px", color: T.muted }}>
+              Rank #{dossier.rank}
             </span>
-            <div className="flex flex-col gap-1">
-              <SignalBadge signal={dossier.signal} />
-              <span className="font-mono text-[11px] text-text-muted">Rank #{dossier.rank}</span>
-            </div>
           </div>
-          <h1 className="font-display text-[40px] font-semibold leading-tight mb-4">
-            {dossier.company}
-          </h1>
-          <p className="font-sans text-[15px] text-text-muted leading-relaxed max-w-2xl">
-            {dossier.shortlistRationale}
-          </p>
-          {dossier.majorRisk && (
-            <div className="mt-6 p-4 bg-red-50 border border-red-100 rounded-sm">
-              <p className="font-sans text-[11px] uppercase tracking-wider text-red-600 mb-1">Major Risk</p>
-              <p className="font-sans text-[13px] text-red-800">{dossier.majorRisk}</p>
-            </div>
-          )}
         </div>
+
+        {/* Company name */}
+        <h1 style={{
+          fontFamily: DISPLAY,
+          fontSize: "clamp(40px, 5vw, 60px)",
+          fontWeight: 400,
+          lineHeight: 1.05,
+          letterSpacing: "-0.01em",
+          color: T.ink,
+          marginBottom: "24px",
+        }}>
+          {dossier.company}
+        </h1>
+
+        {/* Rationale lead */}
+        <p style={{
+          fontFamily: SANS, fontSize: "15px", lineHeight: 1.7,
+          color: T.muted, maxWidth: "640px", marginBottom: "36px",
+        }}>
+          {dossier.shortlistRationale}
+        </p>
+
+        {/* Thin rule */}
+        <div style={{ height: "1px", background: T.border, marginBottom: "36px" }} />
+
+        {/* Risk card */}
+        {dossier.majorRisk && (
+          <div style={{
+            border: `1px solid ${T.border}`,
+            borderTop: `3px solid ${T.primary}`,
+            background: "#fff",
+            padding: "20px 24px",
+            marginBottom: "48px",
+          }}>
+            <p style={{
+              fontFamily: SANS, fontSize: "9px", fontWeight: 700,
+              letterSpacing: "0.18em", textTransform: "uppercase",
+              color: T.primary, marginBottom: "8px",
+            }}>
+              Major Risk
+            </p>
+            <p style={{ fontFamily: SANS, fontSize: "13px", color: T.ink, lineHeight: 1.65 }}>
+              {dossier.majorRisk}
+            </p>
+          </div>
+        )}
 
         {/* Dossier sections */}
         <DossierArticle sections={dossier.sections} />
-      </PageContainer>
-    </>
+      </div>
+    </div>
   );
 }
