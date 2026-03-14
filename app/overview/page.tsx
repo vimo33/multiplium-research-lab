@@ -11,25 +11,24 @@ export default function OverviewPage() {
       {/* Thesis */}
       <section>
         <h2 className="font-display text-[38px] font-semibold leading-[1.1] tracking-tight">
-          Regenerative Viticulture:<br />
-          <span className="italic text-text-muted font-normal text-[34px]">A 2025 Mandate.</span>
+          Regenerative Viticulture<br />
+          <span className="italic text-text-muted font-normal text-[34px]">Technology Landscape</span>
         </h2>
         <p className="mt-3 font-sans text-[14px] text-text-muted max-w-xl leading-relaxed">
-          Evaluating {meta.totalCompanies} sustainable agtech entities through strict evidence standards,
-          transforming dense agronomic data into high-signal investor insights.
+          Thesis-driven landscape mapping, scoring, and shortlist research across {meta.totalCompanies} investable companies.
         </p>
       </section>
 
       {/* Metrics */}
       <section className="grid grid-cols-4 gap-6">
-        <MetricCard icon="corporate_fare" label="Companies Mapped" value={meta.totalCompanies}
-          description="Across 8 segments of the regenerative viticulture value chain" />
-        <MetricCard icon="stars" label="Top Shortlist" value={meta.topShortlist}
-          description="Ranked by composite investor score across 5 weighted dimensions" />
-        <MetricCard icon="biotech" label="Deep Research" value={meta.deepResearch}
-          description="Investor-grade dossiers on the highest-ranked eligible companies" />
-        <MetricCard icon="analytics" label="Scoring Dimensions" value={5}
-          description="Five-pillar investor model applied uniformly across the company universe" />
+        <MetricCard icon="corporate_fare" label="Companies Mapped"   value={meta.totalCompanies}
+          description="Investable entities across the regenerative viticulture value chain" />
+        <MetricCard icon="category"       label="Value Chain Segments" value={12}
+          description="Partner-authored 12-segment framework across 6 grouped categories" />
+        <MetricCard icon="stars"          label="Most Investable"    value={meta.topShortlist}
+          description="Top 20 ranked by composite investor score across 5 weighted dimensions" />
+        <MetricCard icon="flag"           label="Immediate Outreach" value={10}
+          description="Top 10 immediate investor outreach priorities from the partner scoring model" />
       </section>
 
       {/* Context blocks */}

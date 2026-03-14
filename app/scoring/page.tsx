@@ -28,6 +28,13 @@ export default function ScoringPage() {
           </p>
         </div>
         <ScoringPillarList pillars={meta.pillars} />
+        <div className="mt-6 pt-6 border-t border-border-color">
+          <p className="font-sans text-[11px] uppercase tracking-widest text-text-muted mb-2">Model Purpose</p>
+          <p className="font-sans text-[13px] text-text-muted leading-relaxed">
+            This model is designed to reduce a broad universe of ~100 companies to 15–25 high-priority targets.
+            Primary outputs: <strong className="text-text-main">Top 20 Most Investable Companies</strong> and <strong className="text-text-main">Top 10 Immediate Investor Outreach</strong>.
+          </p>
+        </div>
         <div className="mt-8 pt-6 border-t border-border-color">
           <p className="font-sans text-[11px] uppercase tracking-widest text-text-muted mb-3">Score Legend</p>
           <div className="flex items-center gap-2">

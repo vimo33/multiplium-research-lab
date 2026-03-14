@@ -10,12 +10,13 @@ export default function DeepResearchPage() {
   return (
     <PageContainer variant="wide">
       <div className="mb-8">
-        <p className="font-sans text-[11px] uppercase tracking-widest text-text-muted mb-3">Deep Research</p>
+        <p className="font-sans text-[11px] uppercase tracking-widest text-text-muted mb-3">Execution-Layer Deep Research</p>
         <h2 className="font-display text-[40px] font-semibold leading-tight mb-4">
-          Final Top-3 Candidates
+          Post-Shortlist Deep Research
         </h2>
         <p className="font-sans text-[15px] text-text-muted max-w-2xl leading-relaxed">
-          Investor-grade dossiers on the three highest-ranked companies.
+          A later execution-layer narrowing built on top of the partner-authored Top 20 / Top 10 shortlist framework.
+          Three companies were selected for investor-grade deep-research dossiers after applying additional investability filters to the ranked shortlist.
         </p>
       </div>
 
