@@ -13,7 +13,17 @@ import SegmentPill from "@/components/badges/SegmentPill";
 import { formatScore } from "@/lib/utils";
 import type { CompanyIndexItem } from "@/lib/types";
 
-const SEGMENTS = [
+// Partner-authored 6-group value-chain taxonomy
+const VALUE_CHAIN_GROUPS = [
+  { label: "All",                  segments: null },
+  { label: "Upstream Production",  segments: ["Precision viticulture / vineyard management", "Soil health / biologicals", "Irrigation optimisation", "Pest management"] },
+  { label: "Winemaking",           segments: ["Wine production technologies"] },
+  { label: "Infrastructure & Data",segments: ["Carbon MRV / traceability"] },
+  { label: "Downstream",           segments: ["Marketing / distribution", "Consumption platforms"] },
+  { label: "Circular Economy",     segments: ["Packaging / recycling"] },
+] as const;
+
+const ALL_SEGMENTS = [
   "All Segments",
   "Precision viticulture / vineyard management",
   "Soil health / biologicals",
@@ -33,18 +43,25 @@ interface Props { data: CompanyIndexItem[]; }
 export default function CompanyTable({ data }: Props) {
   const router = useRouter();
   const [search,     setSearch]     = useState("");
+  const [group,      setGroup]      = useState("All");
   const [segment,    setSegment]    = useState("All Segments");
   const [confidence, setConfidence] = useState("Any");
   const [shortlist,  setShortlist]  = useState(false);
 
+  const activeGroup = VALUE_CHAIN_GROUPS.find(g => g.label === group)!;
+  const visibleSegments = activeGroup.segments
+    ? ["All Segments", ...activeGroup.segments]
+    : ALL_SEGMENTS;
+
   const filtered = useMemo(() => data.filter(co => {
     if (search && !co.company.toLowerCase().includes(search.toLowerCase()) &&
                   !co.normalizedSegment.toLowerCase().includes(search.toLowerCase())) return false;
+    if (activeGroup.segments && !(activeGroup.segments as readonly string[]).includes(co.normalizedSegment)) return false;
     if (segment !== "All Segments" && co.normalizedSegment !== segment)  return false;
     if (confidence !== "Any"       && co.scoreConfidence !== confidence) return false;
     if (shortlist  && !co.shortlistFlag) return false;
     return true;
-  }), [data, search, segment, confidence, shortlist]);
+  }), [data, search, activeGroup, segment, confidence, shortlist]);
 
   const columns: ColumnDef<CompanyIndexItem>[] = [
     {
@@ -101,7 +118,24 @@ export default function CompanyTable({ data }: Props) {
 
   return (
     <div>
-      {/* Filters */}
+      {/* Group filter (partner value-chain taxonomy) */}
+      <div className="flex items-center gap-2 mb-4 flex-wrap">
+        {VALUE_CHAIN_GROUPS.map(g => (
+          <button
+            key={g.label}
+            onClick={() => { setGroup(g.label); setSegment("All Segments"); }}
+            className={`font-sans text-[12px] px-3 py-1.5 rounded-sm border transition-colors ${
+              group === g.label
+                ? "bg-primary text-surface border-primary"
+                : "border-border-color text-text-muted hover:border-primary hover:text-text-main bg-surface"
+            }`}
+          >
+            {g.label}
+          </button>
+        ))}
+      </div>
+
+      {/* Secondary filters */}
       <div className="flex items-center gap-4 mb-6 flex-wrap">
         <input
           type="text"
@@ -115,7 +149,7 @@ export default function CompanyTable({ data }: Props) {
           onChange={e => setSegment(e.target.value)}
           className="font-sans text-[13px] border border-border-color rounded-sm px-3 py-2 bg-surface text-text-main focus:outline-none focus:border-primary"
         >
-          {SEGMENTS.map(s => <option key={s}>{s}</option>)}
+          {visibleSegments.map(s => <option key={s}>{s}</option>)}
         </select>
         <select
           value={confidence}
