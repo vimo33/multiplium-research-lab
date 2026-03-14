@@ -6,7 +6,7 @@ import SegmentPill from "@/components/badges/SegmentPill";
 import { formatScore, scoreToPercent, heatColor } from "@/lib/utils";
 
 export function generateStaticParams() {
-  return [];
+  return getTop20().map(co => ({ slug: co.slug }));
 }
 
 const SCORE_FIELDS = [
