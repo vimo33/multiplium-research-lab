@@ -83,6 +83,16 @@ export default function ClusterCanvas({ data }: Props) {
 
     // Draw segment labels
     const NS = "http://www.w3.org/2000/svg";
+
+    // Remove existing labels group if present
+    const existingLabels = svgEl.querySelector("g.labels");
+    if (existingLabels) existingLabels.remove();
+
+    // Create labels group (insert before nodes group so it renders behind circles)
+    const labelsG = document.createElementNS(NS, "g");
+    labelsG.setAttribute("class", "labels");
+    svgEl.insertBefore(labelsG, g);
+
     Object.entries(SEGMENT_GROUPS).forEach(([seg, pos]) => {
       const label = document.createElementNS(NS, "text");
       label.setAttribute("x", String(pos.x * W));
@@ -95,7 +105,7 @@ export default function ClusterCanvas({ data }: Props) {
       label.setAttribute("fill", "#8C8C85");
       label.setAttribute("pointer-events", "none");
       label.textContent = SEGMENT_LABELS[seg] ?? seg;
-      svgEl.insertBefore(label, svgEl.firstChild); // render behind circles
+      labelsG.appendChild(label);
     });
 
     sim.on("tick", () => {
