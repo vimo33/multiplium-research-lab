@@ -1,0 +1,29 @@
+{
+  "finalTop3": [
+    "biome-makers",
+    "biorizon-biotech",
+    "agrology"
+  ],
+  "excluded": [
+    {
+      "company": "Regenerative Viticulture Alliance (RVA)",
+      "originalRank": 3,
+      "reason": "Non-profit certification alliance with no equity structure. Not investable as a direct investment.",
+      "type": "not_investable"
+    },
+    {
+      "company": "Sencrop",
+      "originalRank": 4,
+      "reason": "Acquired by Groupe ISAGRI on January 7, 2025. No longer an independent investable entity.",
+      "type": "acquired"
+    }
+  ],
+  "replacements": [
+    {
+      "company": "Agrology",
+      "originalRank": 5,
+      "reason": "Highest-ranked remaining company with medium/high Score Confidence. Seed-stage soil carbon sensor with commercial vineyard deployments."
+    }
+  ],
+  "selectionRule": "Top 3 eligible deep-research candidates after investability review \u2014 not simply top 3 by score."
+}
