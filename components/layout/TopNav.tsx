@@ -19,12 +19,12 @@ export default function TopNav() {
   const pathname = usePathname();
   return (
     <header className="flex items-center justify-between border-b border-border-color bg-surface px-10 py-4 sticky top-0 z-50">
-      <div className="flex items-center gap-4 text-text-main">
+      <Link href="/overview" className="flex items-center gap-4 text-text-main hover:opacity-80 transition-opacity">
         <span className="material-symbols-outlined text-xl text-primary">biotech</span>
         <h1 className="font-display text-xl font-semibold leading-tight tracking-tight">
           Multiplium Research Lab
         </h1>
-      </div>
+      </Link>
       <nav className="flex items-center gap-8">
         {NAV_LINKS.map(({ label, href, newTab }) => {
           const active = !newTab && (pathname === href || (href !== "/overview" && pathname.startsWith(href)));
