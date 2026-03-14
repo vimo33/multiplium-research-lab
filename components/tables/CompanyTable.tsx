@@ -1,5 +1,6 @@
 "use client";
 import { useState, useMemo } from "react";
+import { useRouter } from "next/navigation";
 import {
   useReactTable,
   getCoreRowModel,
@@ -7,7 +8,6 @@ import {
   type ColumnDef,
   flexRender,
 } from "@tanstack/react-table";
-import Link from "next/link";
 import ConfidenceBadge from "@/components/badges/ConfidenceBadge";
 import SegmentPill from "@/components/badges/SegmentPill";
 import { formatScore } from "@/lib/utils";
@@ -31,6 +31,7 @@ const CONFIDENCE_OPTIONS = ["Any", "high", "medium", "low"];
 interface Props { data: CompanyIndexItem[]; }
 
 export default function CompanyTable({ data }: Props) {
+  const router = useRouter();
   const [search,     setSearch]     = useState("");
   const [segment,    setSegment]    = useState("All Segments");
   const [confidence, setConfidence] = useState("Any");
@@ -59,9 +60,7 @@ export default function CompanyTable({ data }: Props) {
       accessorKey: "company",
       header: "Company",
       cell: ({ row }) => (
-        <Link href={`/company/${row.original.slug}`} className="font-sans text-[14px] text-text-main hover:text-primary transition-colors">
-          {row.original.company}
-        </Link>
+        <span className="font-sans text-[14px] text-text-main">{row.original.company}</span>
       ),
     },
     {
@@ -86,10 +85,8 @@ export default function CompanyTable({ data }: Props) {
     {
       id: "detail",
       header: "",
-      cell: ({ row }) => (
-        <Link href={`/company/${row.original.slug}`} className="text-text-muted hover:text-primary">
-          <span className="material-symbols-outlined text-[18px]">chevron_right</span>
-        </Link>
+      cell: () => (
+        <span className="material-symbols-outlined text-[18px] text-text-muted">chevron_right</span>
       ),
     },
   ];
@@ -153,7 +150,11 @@ export default function CompanyTable({ data }: Props) {
           </thead>
           <tbody>
             {table.getRowModel().rows.map(row => (
-              <tr key={row.id} className="border-b border-border-color/50 hover:bg-surface transition-colors">
+              <tr
+                key={row.id}
+                onClick={() => router.push(`/company/${row.original.slug}`)}
+                className="border-b border-border-color/50 hover:bg-surface transition-colors cursor-pointer"
+              >
                 {row.getVisibleCells().map(cell => (
                   <td key={cell.id} className="px-4 py-3">
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
