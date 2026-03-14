@@ -1,4 +1,4 @@
-import { getSelectionLog, getScoringMeta } from "@/lib/data";
+import { getScoringMeta } from "@/lib/data";
 import PageContainer from "@/components/layout/PageContainer";
 
 const METHODOLOGY_CARDS = [
@@ -20,7 +20,6 @@ const METHODOLOGY_CARDS = [
 ];
 
 export default function EvidencePage() {
-  const log  = getSelectionLog();
   const meta = getScoringMeta();
 
   return (
@@ -59,52 +58,21 @@ export default function EvidencePage() {
         </div>
       </div>
 
-      {/* Selection substitutions */}
-      <div className="mb-12">
-        <h3 className="font-sans text-[13px] uppercase tracking-wider text-text-muted mb-6">
-          Top-3 Selection Adjustments
-        </h3>
-        <div className="space-y-4">
-          {log.excluded.map(e => (
-            <div key={e.company} className="border border-red-100 bg-red-50/50 p-4 rounded-sm flex gap-4">
-              <span className="material-symbols-outlined text-red-500 mt-0.5">cancel</span>
-              <div>
-                <p className="font-sans text-[13px] font-medium text-text-main">
-                  {e.company} <span className="font-mono text-[11px] text-text-muted">(scored #{e.originalRank})</span>
-                </p>
-                <p className="font-sans text-[13px] text-text-muted mt-1">{e.reason}</p>
-              </div>
-            </div>
-          ))}
-          {log.replacements.map(r => (
-            <div key={r.company} className="border border-primary/20 bg-primary/5 p-4 rounded-sm flex gap-4">
-              <span className="material-symbols-outlined text-primary mt-0.5">swap_horiz</span>
-              <div>
-                <p className="font-sans text-[13px] font-medium text-text-main">
-                  {r.company} added <span className="font-mono text-[11px] text-text-muted">(original rank #{r.originalRank})</span>
-                </p>
-                <p className="font-sans text-[13px] text-text-muted mt-1">{r.reason}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
       {/* Source files */}
       <div>
         <h3 className="font-sans text-[13px] uppercase tracking-wider text-text-muted mb-4">Pipeline Outputs Backing This App</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3 font-mono text-[12px] text-text-muted">
           {[
-            "output/02_scoring/02_top20.csv",
-            "output/02_scoring/02_scoring_report.md",
-            "output/03_top3/03_top3_summary.csv",
-            "output/03_top3/03_top3_comparison.md",
-            "output/03_top3/03_top3_red_flags.md",
-            "output/03_top3/dossiers/biome-makers.md",
-            "output/03_top3/dossiers/biorizon-biotech.md",
-            "output/03_top3/dossiers/agrology.md",
-            "output/04_memo/04_revised_investor_memo.md",
-            "output/04_memo/04_source_register.csv",
+            "output_sanitized/02_scoring/02_top20.csv",
+            "output_sanitized/02_scoring/02_scoring_report.md",
+            "output_sanitized/03_top3/03_top3_summary.csv",
+            "output_sanitized/03_top3/03_top3_comparison.md",
+            "output_sanitized/03_top3/03_top3_red_flags.md",
+            "output_sanitized/03_top3/dossiers/biome-makers.md",
+            "output_sanitized/03_top3/dossiers/biorizon-biotech.md",
+            "output_sanitized/03_top3/dossiers/agrology.md",
+            "output_sanitized/04_memo/04_revised_investor_memo.md",
+            "output_sanitized/04_memo/04_source_register.csv",
           ].map(f => (
             <div key={f} className="flex items-center gap-2 p-3 border border-border-color rounded-sm bg-surface">
               <span className="material-symbols-outlined text-[14px] text-primary">description</span>

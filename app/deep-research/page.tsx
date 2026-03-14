@@ -1,13 +1,11 @@
 import Link from "next/link";
-import { getTop3, getSelectionLog } from "@/lib/data";
+import { getTop3 } from "@/lib/data";
 import PageContainer from "@/components/layout/PageContainer";
-import SelectionLogBanner from "@/components/research/SelectionLogBanner";
 import SignalBadge from "@/components/badges/SignalBadge";
 import { formatScore } from "@/lib/utils";
 
 export default function DeepResearchPage() {
   const top3 = getTop3();
-  const log  = getSelectionLog();
 
   return (
     <PageContainer variant="wide">
@@ -17,11 +15,9 @@ export default function DeepResearchPage() {
           Final Top-3 Candidates
         </h2>
         <p className="font-sans text-[15px] text-text-muted max-w-2xl leading-relaxed">
-          Investor-grade dossiers on the three highest-ranked eligible companies after investability review.
+          Investor-grade dossiers on the three highest-ranked companies.
         </p>
       </div>
-
-      <SelectionLogBanner log={log} />
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {top3.map((co) => (

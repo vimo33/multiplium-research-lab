@@ -31,7 +31,7 @@
       "description": "Proprietary technology, IP, biological databases, AI models, unique datasets."
     }
   ],
-  "totalCompanies": 98,
+  "totalCompanies": 96,
   "topShortlist": 20,
   "deepResearch": 3,
   "formula": "0.25\u00d7Segment + 0.25\u00d7Technology + 0.20\u00d7Maturity + 0.15\u00d7Impact + 0.15\u00d7Differentiation"
