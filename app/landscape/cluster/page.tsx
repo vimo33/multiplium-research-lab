@@ -1,3 +1,7 @@
+import { getTop20 } from "@/lib/data";
+import ClusterCanvas from "@/components/cluster/ClusterCanvas";
+
 export default function ClusterPage() {
-  return <div className="p-8 font-sans">Cluster View — coming soon</div>;
+  const top20 = getTop20();
+  return <ClusterCanvas data={top20} />;
 }
