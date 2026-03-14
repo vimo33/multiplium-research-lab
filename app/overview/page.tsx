@@ -30,22 +30,15 @@ export default function OverviewPage() {
 
       {/* Process ribbon */}
       <section className="mb-24 relative">
-        <div className="absolute top-[14px] left-[10%] right-[10%] h-px bg-border-color -z-10" />
-        <div className="absolute top-[14px] left-[10%] w-[10%] h-[2px] bg-primary -z-10" />
+        <div className="absolute top-[14px] left-[10%] right-[10%] h-[2px] bg-primary -z-10" />
         <div className="flex justify-between">
           {STEPS.map((step, i) => (
             <div key={i} className="flex flex-col items-center gap-3 flex-1">
-              <div className={`w-7 h-7 rounded-full flex items-center justify-center border-2 border-background-light z-10 ${
-                i === 0 ? "bg-primary text-surface" : "bg-border-color text-text-muted"
-              }`}>
-                <span className="material-symbols-outlined text-[14px]">
-                  {i === 0 ? "check" : step.icon}
-                </span>
+              <div className="w-7 h-7 rounded-full flex items-center justify-center border-2 border-background-light z-10 bg-primary text-surface">
+                <span className="material-symbols-outlined text-[14px]">{step.icon}</span>
               </div>
               <div className="text-center">
-                <p className={`font-sans text-[13px] font-medium ${i === 0 ? "text-primary" : "text-text-muted"}`}>
-                  {step.label}
-                </p>
+                <p className="font-sans text-[13px] font-medium text-primary">{step.label}</p>
                 <p className="font-sans text-[11px] text-text-muted">{step.desc}</p>
               </div>
             </div>

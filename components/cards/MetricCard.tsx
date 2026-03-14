@@ -11,7 +11,7 @@ export default function MetricCard({ icon, label, value, description }: Props) {
     <div className="border-t-2 border-text-main pt-6 cursor-pointer hover:bg-surface p-4 -mx-4 rounded-sm transition-colors group">
       <div className="flex items-center gap-2 mb-2">
         <span className="material-symbols-outlined text-primary">{icon}</span>
-        <h3 className="font-sans text-[13px] uppercase text-text-muted tracking-wider">{label}</h3>
+        <h3 className="font-sans text-[13px] uppercase text-text-muted tracking-wider max-w-[6rem] leading-snug">{label}</h3>
       </div>
       <div className="font-mono text-[32px] text-text-main leading-none">{value}</div>
       {description && (
