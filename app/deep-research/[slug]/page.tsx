@@ -54,22 +54,6 @@ export default async function DossierPage({ params }: { params: Promise<{ slug: 
 
         {/* Dossier sections */}
         <DossierArticle sections={dossier.sections} />
-
-        {/* Sources */}
-        {dossier.sources.length > 0 && (
-          <div className="mt-12 pt-8 border-t border-border-color">
-            <p className="font-sans text-[11px] uppercase tracking-widest text-text-muted mb-4">Sources</p>
-            <ul className="space-y-2">
-              {dossier.sources.map((src, i) => (
-                <li key={i} className="font-sans text-[13px]">
-                  <a href={src} className="text-primary hover:underline break-all" target="_blank" rel="noreferrer">
-                    {src}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
       </PageContainer>
     </>
   );
