@@ -59,6 +59,49 @@ export default function EvidencePage() {
         </div>
       </div>
 
+      {/* Source Framework vs Execution Outputs */}
+      <div className="mb-12 border border-border-color bg-surface p-8 rounded-sm">
+        <h3 className="font-sans text-[13px] uppercase tracking-wider text-text-muted mb-6">Source Framework vs Execution Outputs</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div>
+            <p className="font-sans text-[12px] uppercase tracking-wider text-primary mb-3">Partner-Authored Framework</p>
+            <ul className="space-y-2">
+              {[
+                "Investment Research Memorandum — market context, segmentation, investment thesis",
+                "Investor Scoring Model — five-pillar methodology, Top 20 ranked companies",
+                "Top 10 Immediate Investor Outreach — from the partner scoring model",
+                "12-segment value chain taxonomy — the primary market structure",
+                "Three investment strategy options — Platform, Climate Infrastructure, Circular Economy",
+              ].map(item => (
+                <li key={item} className="flex items-start gap-2 font-sans text-[13px] text-text-main">
+                  <span className="material-symbols-outlined text-primary text-[14px] mt-0.5 shrink-0">check_circle</span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <p className="font-sans text-[12px] uppercase tracking-wider text-text-muted mb-3">Execution-Layer Outputs</p>
+            <ul className="space-y-2">
+              {[
+                "96-company cleaned universe — entity audit removing non-investable entries",
+                "Enriched company profiles — deep data collection across all 96 companies",
+                "Post-shortlist deep research — three investor-grade dossiers (Biome Makers, Biorizon Biotech, Agrology)",
+                "Pipeline scoring outputs — CSV and markdown reports from the automated workflow",
+              ].map(item => (
+                <li key={item} className="flex items-start gap-2 font-sans text-[13px] text-text-muted">
+                  <span className="material-symbols-outlined text-text-muted text-[14px] mt-0.5 shrink-0">output</span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+        <p className="font-sans text-[12px] text-text-muted mt-6 pt-4 border-t border-border-color leading-relaxed">
+          The partner framework is the authoritative basis for this research portal. Execution-layer outputs extend and implement the framework but do not replace it.
+        </p>
+      </div>
+
       {/* Source files */}
       <div>
         <h3 className="font-sans text-[13px] uppercase tracking-wider text-text-muted mb-4">Pipeline Outputs Backing This App</h3>
