@@ -42,7 +42,7 @@ export default function ShortlistPage() {
         <p className="font-sans text-[11px] uppercase tracking-widest text-text-muted mb-4">Top 20 Most Investable Companies</p>
         <ShortlistRankedTable companies={top20} />
         <p className="font-sans text-[12px] text-text-muted mt-4 italic">
-          The shortlist is a scored ranking, not an investment recommendation. Final deep research selection also considers investability constraints.
+          The shortlist is a scored ranking, not an investment recommendation. Final deep research selection applies an additional investability filter — acquired or non-investable entities are excluded.
         </p>
       </section>
     </PageContainer>

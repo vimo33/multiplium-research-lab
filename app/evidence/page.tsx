@@ -70,7 +70,7 @@ export default function EvidencePage() {
                 "Investment Research Memorandum — market context, segmentation, investment thesis",
                 "Investor Scoring Model — five-pillar methodology, Top 20 ranked companies",
                 "Top 10 Immediate Investor Outreach — from the partner scoring model",
-                "12-segment value chain taxonomy — the primary market structure",
+                "9-segment value chain taxonomy — the primary market structure",
                 "Three investment strategy options — Platform, Climate Infrastructure, Circular Economy",
               ].map(item => (
                 <li key={item} className="flex items-start gap-2 font-sans text-[13px] text-text-main">
