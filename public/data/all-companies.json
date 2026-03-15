@@ -1871,23 +1871,23 @@
   {
     "slug": "lallemand-oenology",
     "company": "Lallemand Oenology",
-    "country": "France",
+    "country": "Canada",
     "normalizedSegment": "Wine production technologies",
     "technologyModel": "Other",
-    "teamSizeBucket": "1-10",
+    "teamSizeBucket": "1000+",
     "website": "https://lallemandwine.com",
     "summary": "Lallemand is a global leader in the development and production of wine yeasts, bacteria, and their derivatives, with a strong focus on R&D in collaboration with universities and wineries. Its Oenodia STARS technology provides a sustainable, energy-efficient, and additive-free solution for tartrate and calcium stabilization, used to stabilize over 1.5 billion bottles annually. This technology significantly reduces energy consumption compared to traditional cold stabilization.",
-    "weightedTotalScore": 2.4,
+    "weightedTotalScore": 2.6,
     "rank": 90,
     "scoreConfidence": "high",
     "scoreabilityClass": "scoreable_high",
     "shortlistFlag": false,
     "segmentScore": 3.0,
     "technologyScore": 2.0,
-    "maturityScore": 2.0,
+    "maturityScore": 3.0,
     "impactScore": 2.0,
     "differentiationScore": 3.0,
-    "scoringNotes": "Segment: direct map from Segment: '2. wine production (vinification)' | Tech: No clear tech model; defaulting to Other. Sector='circular_economy' | Team: Range 0-4 (midpoint 2) → 1-10 | Impact: Weak indirect relevance | Diff: Moderate differentiation: 1 strong, 1 moderate signals"
+    "scoringNotes": "Segment: direct map from Segment: '2. wine production (vinification)' | Tech: No clear tech model; defaulting to Other. Sector='circular_economy' | Team: 1000+ employees (Lallemand Inc. parent, Montreal Canada) → maturity 3 | Impact: Weak indirect relevance | Diff: Moderate differentiation: 1 strong, 1 moderate signals"
   },
   {
     "slug": "wineemotion",
