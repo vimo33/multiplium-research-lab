@@ -19,6 +19,7 @@ const VALUE_CHAIN_GROUPS = [
   { label: "Upstream Production",  segments: ["Precision viticulture / vineyard management", "Soil health / biologicals", "Irrigation optimisation", "Pest management"] },
   { label: "Winemaking",           segments: ["Wine production technologies"] },
   { label: "Infrastructure & Data",segments: ["Carbon MRV / traceability"] },
+  { label: "Supply Chain",          segments: ["Marketing / distribution", "Packaging / recycling", "Carbon MRV / traceability"] },
   { label: "Downstream",           segments: ["Marketing / distribution", "Consumption platforms"] },
   { label: "Circular Economy",     segments: ["Packaging / recycling"] },
 ] as const;
