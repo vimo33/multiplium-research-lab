@@ -182,16 +182,15 @@ export const SLIDES: SlideData[] = [
     },
   },
   {
-    id: 11, section: "Company Highlights",
-    title: "High-Potential Company Highlights",
-    subtitle: "From the partner investment memo — four companies with exceptional strategic fit",
+    id: 11, section: "Top 3 Deep Research",
+    title: "Top 3 Deep Research Targets",
+    subtitle: "Post-shortlist deep research — highest-conviction investment targets from the scored and enriched dataset",
     body: {
       type: "cards",
       cards: [
-        { title: "Biome Makers",  body: "Soil microbiome analytics platform for precision regenerative management. Unique biological database across thousands of soil samples. SaaS + lab services hybrid. Directly addresses soil health and carbon sequestration KPIs." },
-        { title: "Deep Planet",   body: "Satellite + AI platform for carbon measurement and traceability in vineyards. Addresses carbon MRV infrastructure gap. Well-positioned for voluntary carbon market expansion in agriculture." },
-        { title: "Elaisian",      body: "AI-driven advisory platform for disease management and precision irrigation. Reduces chemical inputs measurably. Vineyard-specific DSS with demonstrated ROI for growers." },
-        { title: "Arable",        body: "Crop monitoring platform combining on-farm hardware with cloud analytics. Strong vineyard adoption in premium wine regions. Highest composite score in the model; scalable SaaS business model." },
+        { title: "#1 — Biome Makers",      body: "#1 scorer globally (tied). Series B closed 2024 ($15M). World's largest soil microbiome database (55M+ taxa). 56+ country deployments. Dual revenue model: per-test + licensing. Fast Company #4 most innovative in agriculture 2024." },
+        { title: "#2 — Biorizon Biotech",  body: "#2 scorer (tied). World's largest indoor microalgae agricultural production facility in Europe. 4 EU-certified biostimulants. 60+ country distribution. AgroStar India partnership. €23M expansion underway. Strong regulatory moat." },
+        { title: "#3 — Agrology",          body: "Substitute for Sencrop (acquired Jan 2025). Only commercial continuous soil carbon flux monitoring system in vineyards. Named customers: Duckhorn, Jordan, Silver Oak. USDA $5M climate-smart grant. Full GHG stack (N2O sensor 2025)." },
       ],
     },
   },
