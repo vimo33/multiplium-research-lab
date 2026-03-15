@@ -22,13 +22,17 @@ export default function OverviewPage() {
       {/* Metrics */}
       <section className="grid grid-cols-4 gap-6">
         <MetricCard icon="corporate_fare" label="Companies Mapped"   value={meta.totalCompanies}
-          description="Investable entities across the regenerative viticulture value chain" />
-        <MetricCard icon="category"       label="Value Chain Segments" value={12}
-          description="Partner-authored 12-segment framework across 6 grouped categories" />
+          description="Investable entities across the regenerative viticulture value chain"
+          href="/landscape" />
+        <MetricCard icon="category"       label="Value Chain Segments" value={9}
+          description="9-segment framework across 6 grouped value chain categories"
+          href="/landscape/cluster" />
         <MetricCard icon="stars"          label="Most Investable"    value={meta.topShortlist}
-          description="Top 20 ranked by composite investor score across 5 weighted dimensions" />
-        <MetricCard icon="flag"           label="Immediate Outreach" value={10}
-          description="Top 10 immediate investor outreach priorities from the partner scoring model" />
+          description="Top 20 ranked by composite investor score across 5 weighted dimensions"
+          href="/shortlist" />
+        <MetricCard icon="flag"           label="Top 3 Focus"        value={3}
+          description="Post-shortlist deep research on the 3 highest-conviction investment targets"
+          href="/deep-research" />
       </section>
 
       {/* Context blocks */}
