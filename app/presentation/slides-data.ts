@@ -260,18 +260,4 @@ export const SLIDES: SlideData[] = [
       ],
     },
   },
-  {
-    id: 17, section: "Appendix",
-    title: "Appendix: Execution-Layer Output",
-    subtitle: "Later operational output from the research workflow — not the original partner-authored plan",
-    body: {
-      type: "bullets",
-      lead: "The following reflects the executed research pipeline output. Included for reference only.",
-      items: [
-        { text: "Final cleaned top 20 — company-only universe after entity audit", sub: ["2 non-company entities removed (industry organisations)", "96 companies scored"] },
-        { text: "Deep-research candidates: Biome Makers, Biorizon Biotech, Agrology", sub: ["Selected by composite rank with ≥medium score confidence"] },
-        { text: "Full dossiers available in the Deep Research section of this research portal" },
-      ],
-    },
-  },
 ];
