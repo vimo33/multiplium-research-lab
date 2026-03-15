@@ -11,8 +11,7 @@ export default function ShortlistPage() {
     investorSignal: i < 3 ? "HIGH" as const : i < 8 ? "MEDIUM" as const : undefined,
   }));
 
-  const OUTREACH_NAMES = ["Arable", "Biome Makers", "WiseConn", "Naïo Technologies", "Sencrop", "Elaisian", "Deep Planet", "VineView", "Green Atlas", "VitiBot"];
-  const outreach10 = OUTREACH_NAMES.map(name => withSignal.find(co => co.company === name)).filter(Boolean);
+  const outreach10 = withSignal.slice(0, 10);
 
   return (
     <PageContainer variant="wide">
